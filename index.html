@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VisionGuard | Intelligent Screen Safety</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0f1a;
+  --card:#111827;
+  --text:#ffffff;
+  --sub:#bbb;
+  --primary:#00c3ff;
+  --accent:#00ffcc;
+}
+
+.light{
+  --bg:#f4f7fb;
+  --card:#ffffff;
+  --text:#111;
+  --sub:#555;
+  --primary:#0077ff;
+  --accent:#00b894;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  scroll-behavior:smooth;
+  transition:0.4s;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 10%;
+  position:fixed;
+  width:100%;
+  backdrop-filter:blur(10px);
+  z-index:1000;
+}
+
+nav h2{
+  color:var(--primary);
+}
+
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:30px;
+}
+
+nav ul li a{
+  color:var(--text);
+  text-decoration:none;
+}
+
+.toggle-btn{
+  cursor:pointer;
+  background:var(--primary);
+  border:none;
+  padding:8px 15px;
+  border-radius:20px;
+  color:#000;
+  font-weight:600;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+  padding:0 20px;
+}
+
+.hero h1{
+  font-size:60px;
+  background:linear-gradient(90deg,var(--primary),var(--accent));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:fadeIn 1.5s ease;
+}
+
+.hero p{
+  margin-top:20px;
+  font-size:20px;
+  color:var(--sub);
+  animation:fadeIn 2s ease;
+}
+
+.btn{
+  margin-top:30px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:var(--primary);
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:var(--accent);
+  transform:scale(1.05);
+}
+
+/* SECTIONS */
+section{
+  padding:100px 10%;
+}
+
+.section-title{
+  text-align:center;
+  font-size:40px;
+  margin-bottom:60px;
+  color:var(--primary);
+}
+
+/* FEATURES */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card{
+  background:var(--card);
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  transition:0.4s;
+  opacity:0;
+  transform:translateY(40px);
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card:hover{
+  box-shadow:0 0 25px var(--primary);
+}
+
+.card h3{
+  margin:15px 0;
+  color:var(--accent);
+}
+
+.card p{
+  color:var(--sub);
+}
+
+pre{
+  background:var(--card);
+  padding:20px;
+  border-radius:15px;
+  overflow-x:auto;
+  color:var(--accent);
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  color:var(--sub);
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <h2>VisionGuard</h2>
+  <ul>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#code">Code</a></li>
+  </ul>
+  <button class="toggle-btn" onclick="toggleMode()">Light/Dark</button>
+</nav>
+
+<div class="hero">
+  <h1>VisionGuard</h1>
+  <p>Intelligent Screen Safety System</p>
+  <button class="btn" onclick="scrollToFeatures()">Explore Project</button>
+</div>
+
+<section id="features">
+  <h2 class="section-title">Features</h2>
+  <div class="features">
+    <div class="card">
+      <h3>Proximity Detection</h3>
+      <p>Ultrasonic sensor monitors safe distance.</p>
+    </div>
+    <div class="card">
+      <h3>Smart Alert System</h3>
+      <p>LED & buzzer progressive warning.</p>
+    </div>
+    <div class="card">
+      <h3>Auto Screen Control</h3>
+      <p>Relay turns off TV automatically.</p>
+    </div>
+    <div class="card">
+      <h3>Manual Override</h3>
+      <p>Push button reactivates screen.</p>
+    </div>
+  </div>
+</section>
+
+<section id="code">
+  <h2 class="section-title">Arduino Code Snippet</h2>
+<pre>
+#define TRIG 5
+#define ECHO 18
+#define LED 19
+#define BUZZER 21
+#define RELAY 23
+#define BUTTON 4
+</pre>
+</section>
+
+<footer>
+© 2026 VisionGuard | Intelligent Screen Safety
+</footer>
+
+<script>
+function toggleMode(){
+  document.body.classList.toggle("light");
+}
+
+function scrollToFeatures(){
+  document.getElementById("features").scrollIntoView();
+}
+
+// Scroll animation
+const cards = document.querySelectorAll(".card");
+
+window.addEventListener("scroll",()=>{
+  cards.forEach(card=>{
+    const cardTop = card.getBoundingClientRect().top;
+    if(cardTop < window.innerHeight - 100){
+      card.classList.add("show");
+    }
+  });
+});
+</script>
+
+</body>
+                                       </html>
