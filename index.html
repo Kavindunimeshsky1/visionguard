@@ -297,10 +297,19 @@ footer{
   <h2 class="section-title"> Main components</h2>
   <pre>
 Ultrasonic Sensor 
-  <div class="Ultrasonic Sensor">
-    <img src="visionguard.jpg" alt="Ultrasonic Sensor ">
-  </div>
-  </div>    
+  <style>
+.ultrasonic img {
+  width: 120px;      /* image size */
+  height: auto;      /* ratio keep */
+  display: block;
+  margin: 10px auto; /* center */
+}
+</style>
+
+<div class="ultrasonic">
+  <img src="visionguard.jpg" alt="Ultrasonic Sensor">
+</div>
+   
 #define ECHO 18
 #define LED 19
 #define BUZZER 21
